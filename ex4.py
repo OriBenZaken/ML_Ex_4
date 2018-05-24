@@ -16,6 +16,7 @@ LEARN_RATE = 0.01
 EPOCHS = 10
 FIRST_HIDDEN_LAYER_SIZE = 100
 SECOND_HIDDEN_LAYER_SIZE = 50
+NUMBER_OF_CLASSES = 10
 
 class FashionMnistModelTrainer(object):
 
@@ -105,7 +106,7 @@ class FirstNet(nn.Module):
         self.image_size = image_size
         self.fc0 = nn.Linear(image_size, FIRST_HIDDEN_LAYER_SIZE)
         self.fc1 = nn.Linear(FIRST_HIDDEN_LAYER_SIZE, SECOND_HIDDEN_LAYER_SIZE)
-        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, 10)
+        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, NUMBER_OF_CLASSES)
 
     def forward(self, x):
         x = x.view(-1, self.image_size)
@@ -121,7 +122,7 @@ class SecondNet(nn.Module):
         self.image_size = image_size
         self.fc0 = nn.Linear(image_size, FIRST_HIDDEN_LAYER_SIZE)
         self.fc1 = nn.Linear(FIRST_HIDDEN_LAYER_SIZE, SECOND_HIDDEN_LAYER_SIZE)
-        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, 10)
+        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, NUMBER_OF_CLASSES)
 
     def forward(self, x):
         x = x.view(-1, self.image_size)
@@ -139,7 +140,7 @@ class ThirdNet(nn.Module):
         self.image_size = image_size
         self.fc0 = nn.Linear(image_size, FIRST_HIDDEN_LAYER_SIZE)
         self.fc1 = nn.Linear(FIRST_HIDDEN_LAYER_SIZE, SECOND_HIDDEN_LAYER_SIZE)
-        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, 10)
+        self.fc2 = nn.Linear(SECOND_HIDDEN_LAYER_SIZE, NUMBER_OF_CLASSES)
         self.bn1 = nn.BatchNorm1d(FIRST_HIDDEN_LAYER_SIZE)
         self.bn2 = nn.BatchNorm1d(SECOND_HIDDEN_LAYER_SIZE)
 
