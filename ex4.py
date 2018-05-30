@@ -273,20 +273,13 @@ def main():
     train_sampler = SubsetRandomSampler(train_idx)
     validation_sampler = SubsetRandomSampler(validation_idx)
 
-    # Create the train_loader -- use your real batch_size which you
-    # I hope have defined somewhere above
+    # Create the train_loader
     train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
                                                     batch_size=BATCH_SIZE, sampler = train_sampler)
 
-    # You can use your above batch_size or just set it to 1 here.  Your validation
-    # operations shouldn't be computationally intensive or require batching.
     validation_loader = torch.utils.data.DataLoader(dataset=train_dataset,
                                                          batch_size=1, sampler=validation_sampler)
 
-    # You can use your above batch_size or just set it to 1 here.  Your test set
-    # operations shouldn't be computationally intensive or require batching.  We
-    # also turn off shuffling, although that shouldn't affect your test set operations
-    # either
     test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
                                                    batch_size=1,
                                                    shuffle=False)
